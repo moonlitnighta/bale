@@ -1,0 +1,31 @@
+{
+  "name": "bale",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./lib/bale.js",
+  "bin": {
+    "bale": "./bin/bale.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "bale --config ./test/config.js",
+    "dev": "node --nolazy --inspect-brk=8080 ./bin/bale.js --config ./test/config.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "cssnano": "^3.10.0",
+    "esprima": "^4.0.0",
+    "estraverse": "^4.2.0",
+    "less": "^3.0.4",
+    "node-sass": "^4.9.0",
+    "optimist": "^0.6.1",
+    "postcss": "^6.0.22",
+    "uglify-js": "^3.4.0"
+  },
+  "devDependencies": {
+    "jquery": "^3.3.1"
+  }
+}
