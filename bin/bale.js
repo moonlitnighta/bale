@@ -59,11 +59,11 @@ options.outputContext = path.dirname(options.outputPath);
 //编译上下文目录
 options.context = path.dirname(options.entryPath);
 
-//处理的文件类型集合
+//默认会被发现的文件
 options.extensions = args.extensions || ['.js','.css'];
 
-//处理文件类型之外的文件如何处理 默认处理？
-options.otherFile = args.otherFile || 'adopt';
+//处理文件类型之外的文件如何处理 默认处理？默认拦截
+options.otherFile = args.otherFile || 'prevent';
 
 //解析规则
 options.resolve = args.resolve || {};

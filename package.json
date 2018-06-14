@@ -9,7 +9,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "bale --config ./test/config.js",
-    "dev": "node --nolazy --inspect-brk=8080 ./bin/bale.js --config ./test/config.js"
+    "dev": "node --nolazy --inspect-brk=8080 ./bin/bale.js --config ./www/config.js"
   },
   "keywords": [],
   "author": "",
