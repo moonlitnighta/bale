@@ -34,10 +34,9 @@ if(args.config){
 
 	//根据配置的入口参数 获取 入口文件的绝对路径
 	config.entryPath = mergePath(path.dirname(config.configPath) , config.entry);
+
 	//根据配置的出口参数 获取 出口文件的绝对路径
-	config.outputPath = mergePath(path.dirname(config.configPath) , config.output);
-	//根据入口配置获取入口文件的上下文目录
-	config.entryContext = path.dirname(config.configPath);
+	config.output = config.output && outputConfig(config.output , path.dirname(config.configPath));
 	//........
 
 	//和命令行参数合并
@@ -49,12 +48,13 @@ if(args.config){
 //入口文件
 options.entry = args.entry;
 options.entryPath = args.entryPath || mergePath(balePath , args.entry);
-options.entryContext = args.entryContext || balePath;
 
 //出口
-options.output = args.output;
-options.outputPath = args.outputPath || mergePath(balePath , args.output);
-options.outputContext = path.dirname(options.outputPath);
+if(options.config && config.output){
+	options.output = args.output;
+} else {
+	options.output = args.output && outputConfig(args.output , balePath);
+}
 
 //编译上下文目录
 options.context = path.dirname(options.entryPath);
@@ -69,7 +69,7 @@ options.otherFile = args.otherFile || 'prevent';
 options.resolve = args.resolve || {};
 options.resolve.minimal = options.resolve.minimal || false;
 
-//loaders
+//自定义loaders
 options.loaders = args.loaders || [];
 
 //内置loaders
@@ -122,7 +122,7 @@ options.internalLoaders.image.limit = options.internalLoaders.image.limit &&
 //------------------------------------------根据命令行参数及配置文件生成编译对象-----------------------------------------//
 
 //没有入口 出口 配置直接退出
-if(!args.entry || typeof args.entry != 'string' || !args.output || typeof args.output != 'string'){
+if(!args.entry || typeof args.entry != 'string' || !args.output){
 	global._bale_.error({
 		message:"入口出口参数错误",
 		exit:true
@@ -139,8 +139,36 @@ function mergePath(publicPath , _path){
 		return path.isAbsolute(_path) ? _path : path.resolve(publicPath , _path);
 	} catch (err){
 		global._bale_.error({
-			message:'Error: 参数错误' + err,
+			message:'Error: 参数错误: ' + _path + err,
 			exit:true
 		})
 	}
+}
+
+//处理输出配置
+function outputConfig(opt , publicPath){
+	let config = {};
+
+	if(Object.prototype.toString.call(opt) == '[object String]'){
+		try {
+			config.path = mergePath(publicPath , opt);
+			config.fileName = path.basename(config.path);
+			config.context = path.dirname(config.path);
+		} catch (err) {
+			config = undefined;
+		}
+			
+	} else if (Object.prototype.toString.call(opt) == '[object Object]'){
+		try {
+			config.path = mergePath(publicPath , opt.path);
+			config.fileName = opt.fileName || 'output.js';
+			config.context = path.dirname(path.join(config.path , config.fileName));
+		} catch (err) {
+			config = undefined;
+		}
+	} else {
+		config = undefined;
+	}
+
+	return config;
 }
