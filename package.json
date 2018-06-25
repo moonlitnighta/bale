@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@vue/component-compiler-utils": "^2.0.0",
     "babel-core": "^6.26.3",
     "babelify": "^8.0.0",
     "browserify": "^16.2.2",
@@ -27,7 +28,8 @@
     "optimist": "^0.6.1",
     "postcss": "^6.0.22",
     "through": "^2.3.8",
-    "uglify-js": "^3.4.0"
+    "uglify-js": "^3.4.0",
+    "vue-template-compiler": "^2.5.16"
   },
   "devDependencies": {
     "jquery": "^3.3.1",

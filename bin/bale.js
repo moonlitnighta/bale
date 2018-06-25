@@ -57,7 +57,7 @@ if(options.config && config.output){
 }
 
 //编译上下文目录
-options.context = path.dirname(options.entryPath);
+options.context = balePath;
 
 //默认会被发现的文件
 options.extensions = args.extensions || ['.js','.css'];
@@ -101,6 +101,10 @@ if(options.internalLoaders.uglifyJs){
 	}
 }
 
+//vue编译选项
+options.internalLoaders.vue = options.internalLoaders.vue || {};
+options.internalLoaders.vue.transformAssetUrls = options.internalLoaders.vue.transformAssetUrls || true;
+
 //sass转换选项
 options.internalLoaders.nodeSass = options.internalLoaders.nodeSass || {};
 options.internalLoaders.nodeSass.includePaths = options.internalLoaders.nodeSass.includePaths || [];
@@ -130,6 +134,7 @@ if(!args.entry || typeof args.entry != 'string' || !args.output){
 }
 
 //调用bale构建
+_bale_.options = options;
 bale(options);
 
 //-------------------------------------------------//
