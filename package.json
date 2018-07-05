@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "bale --config ./test/config.js",
+    "build": "rm -rf dist/* && bale --config ./www/config.js",
     "dev": "node --nolazy --inspect-brk=8080 ./bin/bale.js --config ./www/config.js"
   },
   "keywords": [],
@@ -19,9 +19,11 @@
     "babel-core": "^6.26.3",
     "babelify": "^8.0.0",
     "browserify": "^16.2.2",
+    "colors": "^1.3.0",
     "cssnano": "^3.10.0",
     "esprima": "^4.0.0",
     "estraverse": "^4.2.0",
+    "htmlparser2": "^3.9.2",
     "less": "^3.0.4",
     "node-libs-browser": "^2.1.0",
     "node-sass": "^4.9.0",
@@ -33,6 +35,10 @@
   },
   "devDependencies": {
     "jquery": "^3.3.1",
-    "vue": "^2.5.16"
+    "onsenui": "^2.10.1",
+    "vue": "^2.5.16",
+    "vue-onsenui": "^2.6.1",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
   }
 }
