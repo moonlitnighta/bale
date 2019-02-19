@@ -8,8 +8,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist/* && bale --config ./www/config.js",
-    "dev": "node --nolazy --inspect-brk=8080 ./bin/bale.js --config ./www/config.js"
+    "build": "rm -rf dist/* && bale --config ./build/config.js",
+    "dev": "node --nolazy --inspect-brk=8080 ./bin/bale.js --config ./build/config.js"
   },
   "keywords": [],
   "author": "",
@@ -34,11 +34,14 @@
     "vue-template-compiler": "^2.5.16"
   },
   "devDependencies": {
+    "babel-preset-latest": "^6.24.1",
+    "element-ui": "^2.5.4",
     "jquery": "^3.3.1",
+    "lodash": "^4.17.11",
     "onsenui": "^2.10.1",
     "vue": "^2.5.16",
     "vue-onsenui": "^2.6.1",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.1.0"
   }
 }
