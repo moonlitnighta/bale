@@ -1,5 +1,6 @@
 <template>
 	<div class="home">
+		<p class="user">hello {{userName || 'bale'}}</p>
 		<div class="logo">
 			<img :src="logo">
 		</div>
@@ -15,7 +16,13 @@
 </template>
 <script>
 	import logo from './image/logo.png';
+	import { mapState } from 'vuex';
 	export default {
+		computed: mapState({
+            userName(state) {
+                return state.app.user;
+            },
+        }),
 		data(){
 			return {
 				logo:logo
@@ -31,9 +38,17 @@
 		flex-direction:column;
 		justify-content:center;
 		text-align: center;
+		position: relative;
 
 		div{
 			margin-bottom: 20px;
+		}
+		.user{
+			position: absolute;
+			right: 20px;
+			top: 15px;
+			font-size: 15px;
+			color: #2c3d4f;
 		}
 		.logo{
 			height: 110px;
