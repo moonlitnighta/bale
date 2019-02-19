@@ -8,7 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rm -rf dist/* && bale --config ./build/config.js",
+    "build": "rm -rf dist/* && ./bin/bale.js --config ./build/config.js",
     "dev": "node --nolazy --inspect-brk=8080 ./bin/bale.js --config ./build/config.js"
   },
   "keywords": [],
