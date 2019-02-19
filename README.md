@@ -7,7 +7,7 @@
 <div>3、这不是完整的项目，因为只是自己平时用下，所以仅在macos测试使用</div>
 <br />
 <br />
-运行实例
+运行示例
     
     git clone https://github.com/moonlitnighta/bale.git
     cd bale
