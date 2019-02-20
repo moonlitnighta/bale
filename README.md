@@ -5,7 +5,7 @@
 <div>1、支持 common 及 es module</div>
 <div>2、其中内置了 sass less image vue 等loader</div>
 <div>3、内置了 js css 文件合并 、uglifyJs 、image转base64 、 babel、html模板等功能</div>
-<div>ps:这不是完整的项目，因为只是自己平时用下，所以仅在macos测试使用</div>
+<div>ps:这不是完整的项目，因为只是自己平时用下，并未在window测试使用</div>
 <br />
 <br />
 运行示例
